@@ -36,6 +36,23 @@ public function eliminaCategoria($idca){
 }
 
 
+ public function bringdata($ide){
+        
+        $c = new conectar();
+        $conexion = $c->conexion();
+
+        $sql = "SELECT idtb_plan,descripcion,id_moneda,ROUND(costo),cant_clases FROM tb_plan WHERE idtb_plan = '$ide'";
+        $result = mysqli_query($conexion,$sql);
+
+        $ver = mysqli_fetch_row($result);
+
+        $datos = array("idtb_plan"=>$ver[0],"descripcion"=>$ver[1],"id_moneda"=>$ver[2],"costo"=>$ver[3],"cant_clases"=>$ver[4]);
+
+
+        return $datos;
+    }
+
+
 
         
     }

@@ -14,21 +14,27 @@ $result = mysqli_query($conexion, $sql);
 
 <table class="table table-hover table-condensed table-bordered" id="tabladinamica">
     
-    <thead>
-    <tr style=" background-color: #86e9f8; text-align: center;">
-        <td>Id</td>
-        <td>Descripcion</td>
-        <td>Costo</td>
-        <td>Dias/Clases</td>
+    <thead style="text-align: center;">
+    <tr>
+        <td style="text-align: center;">Id</td>
+        <td style="text-align: center;">Descripcion</td>
+        <td style="text-align: center;">Costo</td>
+        <td style="text-align: center;">Dias/Clases</td>
         <td>Editar</td>
         <td>Borrar</td>
     </tr>
     </thead>
+
+
     <tbody>
 
 
     <?php
 
+
+
+                
+                
 
     while ($ver = mysqli_fetch_row($result)) :
     ?>
@@ -40,16 +46,16 @@ $result = mysqli_query($conexion, $sql);
             <td style="text-align: center;"><?php echo strtoupper($ver[3]); ?></td>
 
             <td style="width: 10px; text-align:center">
-                <span class="btn btn-warning btn-sm">
-                    <span class="glyphicon glyphicon-pencil" 
-                    data-toggle="modal" data-target="#actualizaCategorias" 
-                    onclick="agregaDato('<?php echo $ver[0] ?>','<?php echo utf8_encode($ver[1]) ?>')"></span>
+                <span class="btn btn-primary btn-xs">
+                    <span  
+                    data-toggle="modal" data-target="#updateplan" 
+                    onclick="agregadato('<?php echo $ver[0] ?>')"> Modificar</span>
                 </span>
 
             </td>
             <td style="width: 20px; text-align:center">
-            <span class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-remove" onclick="eliminaCategoria('<?php echo $ver[0] ?>')"></span>
+            <span class="btn btn-danger btn-xs" >
+                <span onclick="eliminaCategoria('<?php echo $ver[0] ?>')"> Eliminar</span>
             </span>
 
             </td>

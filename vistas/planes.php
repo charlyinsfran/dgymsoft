@@ -14,10 +14,31 @@
 
         $sql = "SELECT id_moneda,descripcion,simbolo from tb_moneda";
         $result = mysqli_query($conexion, $sql);
+        $result2 = mysqli_query($conexion, $sql);
 
 
 
         ?>
+
+        <style>
+           .boton { display: inline-block;
+                outline: 0;
+                border: none;
+                cursor: pointer;
+                line-height: 1.0rem;
+                font-weight: 900;
+                background: #007a5a;
+                padding: 8px 14px 9px;
+                font-size: 12px;
+                border-radius: 4px;
+                color: #fff;
+                height: 36px;
+                transition: all 75ms ease-in-out;
+                :hover{
+                    box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+                }
+            }
+        </style>
     </head>
 <br>
 <br>
@@ -28,19 +49,18 @@
             <div class="container">
                 <div class="row"></div>
             </div></div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div class="container">
                 <div class="row">
-                    <span class="btn btn-primary" 
-                    style="width: 180px; height: 40px; font-family:SANS-SERIF; font-size: 100%;" 
-                    data-toggle="modal" data-target="#newplan">Nuevo Plan</span>
+                    <span class="boton btn btn-primary" 
+                      data-toggle="modal" data-target="#newplan">Nuevo Plan</span>
 
                 </div>
             </div>
 
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-7">
 
             <div id="tableplanload" style="align-content:left;">
 
@@ -97,19 +117,32 @@
 ********************************
 MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
-        <div class="modal fade" id="actualizaCategorias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="updateplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Actualiza Categorias</h4>
+                        <h4 class="modal-title" id="myModalLabel">Update Planes</h4>
                     </div>
                     <div class="modal-body">
-                        <form id="frm_CategoriasUpdates">
-                            <input type="text" hidden="" id="idcategoriaold" name="idcategoriaold">
-                            <label>Descripcion</label>
-                            <input type="text" id="categoriaupdate" name="categoriaupdate" class="form-control input-sm">
+                        <form id="frm_planupdate">
+                            <input type="text" name="idee" id="idee" hidden>
+                           <label>Descripcion</label>
+                            <input type="text" class="form-control input-sm" id="descripcion_update" name="descripcion_update">
+                            <label>Moneda</label>
                             <p></p>
+                            <select class="form-control input-sm" name="moneda_update" id="moneda_update" style="width: 250px;" required>
+                                <option value="A">Seleccione moneda:</option>
+                                <?php while ($view2 = mysqli_fetch_row($result2)) : ?>
+                                    <option value="<?php echo $view2[0] ?>"><?php echo $view2[1] . ' - ' . $view2[2]; ?></option>
+           
+                                <?php endwhile; ?>
+                            </select>
+                            <p></p>
+                            <label>Costo</label>
+                            <input type="text" class="form-control input-sm" id="costo_update" name="costo_update">
+                            <label>Clases/Dias</label>
+                            <input type="text" class="form-control input-sm" id="dias_update" name="dias_update">
                         </form>
 
 
@@ -137,6 +170,9 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
     $(document).ready(function() {
             $('#moneda').select2({
                 dropdownParent: $('#newplan')
+            });
+            $('#moneda_update').select2({
+                dropdownParent: $('#updateplan')
             });
             
         });
@@ -178,6 +214,33 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                 });
             });
         });
+    </script>
+
+
+    <script>
+        
+        function agregadato(idplan) {
+            $.ajax({
+                type: "POST",
+                data: "idplan=" + idplan,
+                url: "../process/planes_actions/bringdataupdate.php",
+                success: function(r) {
+
+                    dato = jQuery.parseJSON(r);
+
+                    $('#idee').val(dato['idtb_plan']);
+                    $('#descripcion_update').val(dato['descripcion']);
+                    $('#moneda_update').val(dato['id_moneda']);
+                    $('#costo_update').val(dato['costo']);
+                    $('#dias_update').val(dato['cant_clases']);
+                   
+                    
+                    
+
+                }
+            });
+        }
+    
     </script>
 
 <!--

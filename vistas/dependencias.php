@@ -9,11 +9,12 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="../libraries/datatables/css/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../libraries/datatables/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../libraries/DataTables/css/buttons.dataTables.min.css" >
-<link rel="stylesheet" type="text/css" href="../libraries/datatables/css/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../libraries/datatables/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.min.css">
+
 
 
 <script src="../libraries/js/jquery-3.2.1.min.js"></script>
@@ -25,6 +26,7 @@
 
 <script src="../libraries/DataTables/js/jquery.dataTables.js"></script>
 <script src="../libraries/DataTables/js/dataTables.bootstrap.js"></script>
+
 <script src="../libraries/DataTables/js/dataTables.buttons.min.js"></script>
 <script src="../libraries/DataTables/js/pdfmake.min.js"></script>
 <script src="../libraries/DataTables/js/jszip.min.js"></script>
