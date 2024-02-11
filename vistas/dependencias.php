@@ -9,11 +9,9 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="../libraries/DataTables/css/buttons.dataTables.min.css" >
 <link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.min.css">
 
 
 

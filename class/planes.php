@@ -14,13 +14,17 @@ class planes{
     }
 
 
-public function actualizarCategorias($datos){
+public function updateplan($datos){
     
 
 		$c = new conectar();
 		$conexion=$c->conexion();
 
-		$sql = "UPDATE categorias SET nombreCategoria = '$datos[1]' WHERE id_categoria = '$datos[0]'";
+		$sql = "UPDATE tb_plan SET descripcion = '$datos[1]',
+        id_moneda = '$datos[2]',
+        costo = '$datos[3]',
+        cant_clases = '$datos[4]'
+         WHERE idtb_plan= '$datos[0]'";
 
 		echo mysqli_query($conexion,$sql);
 	
@@ -28,10 +32,10 @@ public function actualizarCategorias($datos){
 }
 
 
-public function eliminaCategoria($idca){
+public function deleteplan($id){
     $c = new conectar();
     $conexion=$c->conexion();
-    $sql = "DELETE FROM categorias where id_categoria = '$idca'";
+    $sql = "DELETE FROM tb_plan where idtb_plan = '$id'";
     return mysqli_query($conexion,$sql);
 }
 

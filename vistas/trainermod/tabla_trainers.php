@@ -6,7 +6,7 @@ require_once "../../class/conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
-$sql = "SELECT tp.idtb_plan,tp.descripcion,CONCAT(m.simbolo, '. ',tp.costo) as costo,tp.cant_clases from tb_plan tp join tb_moneda m on m.id_moneda = tp.id_moneda";
+$sql = "SELECT id_entrenadores,CONCAT(nombre,' ',apellido) AS trainer,cedula,formacion,direccion,ciudad,edad FROM tb_entrenadores";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -18,9 +18,12 @@ $result = mysqli_query($conexion, $sql);
     <thead style="text-align: center; background-color: #73f0a1;">
     <tr>
         <td style="text-align: center;">Id</td>
-        <td style="text-align: center;">Descripcion</td>
-        <td style="text-align: center;">Costo</td>
-        <td style="text-align: center;">Dias/Clases</td>
+        <td style="text-align: center;">Nombre</td>
+        <td style="text-align: center;">Cedula</td>
+        <td style="text-align: center;">Formacion</td>
+        <td style="text-align: center;">Direccion</td>
+        <td style="text-align: center;">Ciudad</td>
+        <td style="text-align: center;">Edad</td>
         <td>Editar</td>
         <td>Borrar</td>
     </tr>
@@ -45,6 +48,9 @@ $result = mysqli_query($conexion, $sql);
             <td style="text-align: center;"><?php echo strtoupper($ver[1]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[2]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[3]); ?></td>
+            <td style="text-align: center;"><?php echo strtoupper($ver[4]); ?></td>
+            <td style="text-align: center;"><?php echo strtoupper($ver[5]); ?></td>
+            <td style="text-align: center;"><?php echo strtoupper($ver[6]); ?></td>
 
             <td style="width: 10px; text-align:center">
                 <span class="btn btn-primary btn-xs">
@@ -81,7 +87,7 @@ $result = mysqli_query($conexion, $sql);
         "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
         "infoPostFix": "",
         "search": "Buscar:",
-        searchPlaceholder: "codigo/plan",
+        searchPlaceholder: "Ingrese cedula y/o nombre",
         "infoFiltered": "(filtrado de un total de _MAX_ registros)",
         "loadingRecords": "Cargando...",
         "lengthMenu": "Mostrar _MENU_ registros",

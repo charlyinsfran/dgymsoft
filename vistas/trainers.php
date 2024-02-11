@@ -3,8 +3,8 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="shortcut icon" href="../pictures/iconos/planes.png">
-        <title>Planes</title>
+        <link rel="shortcut icon" href="../pictures/iconos/trainer.png">
+        <title>Entrenadores</title>
         <?php 
         require_once "menu.php";
 
@@ -12,11 +12,9 @@
         $c = new conectar();
         $conexion = $c->conexion();
 
-        $sql = "SELECT id_moneda,descripcion,simbolo from tb_moneda";
+        $sql = "SELECT id_ciudades,descripcion from tb_ciudades";
         $result = mysqli_query($conexion, $sql);
         $result2 = mysqli_query($conexion, $sql);
-
-
 
         ?>
 
@@ -42,8 +40,6 @@
     </head>
 <br>
 <br>
-<br>
-<br>
     <body>
         <div class="col-sm-2">
             <div class="container">
@@ -52,10 +48,10 @@
         </div>
 
         <div class="col-sm-8">
-            <h3 style="text-align: center;">Planes</h3>
+            <h3 style="text-align: center;">Entrenadores</h3>
             
-            <span class="boton btn btn-primary" data-toggle="modal" data-target="#newplan">Nuevo Plan</span>
-            <div id="tableplanload" style="align-content:left;">
+            <span class="boton btn btn-primary" data-toggle="modal" data-target="#new_trainer">Nuevo</span>
+            <div id="tabletrainerload" style="align-content:left;">
 
             </div>
 
@@ -63,34 +59,41 @@
 
         <!-- MODAL PARA AGREGAR NUEVO PLAN	-->
 
-        <div class="modal fade" id="newplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="new_trainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Plan</h4>
+                        <h4 class="modal-title" id="myModalLabel">Nuevo Entrenador</h4>
                     </div>
                     <div class="modal-body">
 
 
                         <form id="frm_planes">
                             
-                            <label>Descripcion</label>
-                            <input type="text" class="form-control input-sm" id="descripcion" name="descripcion">
-                            <label>Moneda</label>
+                            <label>Nombre</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            <label>Cedula</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            <label>Formacion</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            <label>Direccion</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            <label>Ciudad</label>
                             <p></p>
-                            <select class="form-control input-sm" name="moneda" id="moneda" style="width: 250px;" required>
-                                <option value="A">Seleccione moneda:</option>
+                            <select class="form-control input-sm" name="" id="" style="width: 250px;" required>
+                                <option value="A">Seleccione ciudad:</option>
                                 <?php while ($view = mysqli_fetch_row($result)) : ?>
                                     <option value="<?php echo $view[0] ?>"><?php echo $view[1] . ' - ' . $view[2]; ?></option>
            
                                 <?php endwhile; ?>
                             </select>
                             <p></p>
-                            <label>Costo</label>
-                            <input type="text" class="form-control input-sm" id="costo" name="costo">
-                            <label>Clases/Dias</label>
-                            <input type="text" class="form-control input-sm" id="dias" name="dias">
+                            <label>Edad</label>
+                            <input type="text" class="form-control input-sm" id="" name="">
+                            
                         </form>
 
 
@@ -98,7 +101,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btnAddPlan" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-                        <a href="planes.php"> <span class="btn btn-danger">Cancelar</span></a>
+                        <a href="trainers.php"> <span class="btn btn-danger">Cancelar</span></a>
 
                     </div>
                 </div>
@@ -153,7 +156,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
     </body>
 
     </html>
-
+<!--
     <script>
         $('#newplan').on('shown.bs.modal', function () { $('#descripcion').focus();}) 
         //$('#actualizaCategorias').on('shown.bs.modal', function () { $('#categoriaupdate').focus();}) 
@@ -170,11 +173,12 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
             
         });
 </script>
+-->
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tableplanload').load("planesmod/tableplanes.php");
-            
+            $('#tabletrainerload').load("trainermod/tabla_trainers.php");
+            /*
             $('#btnAddPlan').click(function() {
 
                 $vacios = validarFormVacio('frm_planes');
@@ -205,10 +209,10 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
                     }
                 });
-            });
+            });*/
         });
     </script>
-
+<!--
 
     <script>
         
@@ -293,4 +297,4 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
             });
 
         }
-    </script>
+    </script>-->
