@@ -6,7 +6,10 @@ require_once "../../class/conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
-$sql = "SELECT id_entrenadores,CONCAT(nombre,' ',apellido) AS trainer,cedula,formacion,direccion,ciudad,edad FROM tb_entrenadores";
+$sql = "SELECT entr.id_entrenadores,CONCAT(entr.nombre,' ',entr.apellido) AS trainer,
+entr.cedula,entr.formacion,entr.direccion,city.descripcion,entr.edad,ft.ruta_subida FROM tb_entrenadores entr 
+join tb_ciudades city on city.id_ciudades = entr.ciudad 
+join tb_photos ft on ft.id_photos = entr.id_tbphoto";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -24,6 +27,7 @@ $result = mysqli_query($conexion, $sql);
         <td style="text-align: center;">Direccion</td>
         <td style="text-align: center;">Ciudad</td>
         <td style="text-align: center;">Edad</td>
+        <td style="text-align: center;">Photo</td>
         <td>Editar</td>
         <td>Borrar</td>
     </tr>
@@ -49,20 +53,29 @@ $result = mysqli_query($conexion, $sql);
             <td style="text-align: center;"><?php echo strtoupper($ver[2]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[3]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[4]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[5]); ?></td>
+            <td style="text-align: center;"><?php echo $ver[5]; ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[6]); ?></td>
+            <td>
+                <?php 
+            $imagen =explode("/",$ver[7]);
+            $imagenruta = $imagen[1]."/".$imagen[2]."/".$imagen[3]."/".$imagen[4];
+            ?>
+
+             <img width="40" height="40" src="<?php echo $imagenruta?>">
+
+            </td>
 
             <td style="width: 10px; text-align:center">
                 <span class="btn btn-primary btn-xs">
                     <span  
-                    data-toggle="modal" data-target="#updateplan" 
+                    data-toggle="modal" data-target="#update_trainer" 
                     onclick="agregadato('<?php echo $ver[0] ?>')"> Modificar</span>
                 </span>
 
             </td>
             <td style="width: 20px; text-align:center">
             <span class="btn btn-danger btn-xs" >
-                <span onclick="deleteplan('<?php echo $ver[0] ?>')"> Eliminar</span>
+                <span onclick="eliminatrainer('<?php echo $ver[0] ?>')"> Eliminar</span>
             </span>
 
             </td>
