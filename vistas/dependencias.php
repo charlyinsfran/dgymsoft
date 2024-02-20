@@ -6,6 +6,8 @@
 <link rel="stylesheet" type="text/css" href="../libraries/alertifyjs/css/themes/default.css">
 <link rel="stylesheet" type="text/css" href="../libraries/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../libraries/select2/css/select2.css">
+<link rel="stylesheet" href="../libraries/css/estilos_menu.css">
+<link rel="stylesheet" href="../libraries/css/styles_inicio.css">
 
 
 
@@ -16,6 +18,7 @@
 
 
 <script src="../libraries/js/jquery-3.2.1.min.js"></script>
+<script src="../libraries/js/jquery1.js"></script>
 <script src="../libraries/alertifyjs/alertify.js"></script>
 <script src="../libraries/bootstrap/js/bootstrap.js"></script>
 <script src="../libraries/select2/js/select2.js"></script>

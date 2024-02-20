@@ -6,7 +6,7 @@ require_once "../../class/conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
-$sql = "SELECT tp.idtb_plan,tp.descripcion,CONCAT(m.simbolo, '. ',tp.costo) as costo,tp.cant_clases from tb_plan tp join tb_moneda m on m.id_moneda = tp.id_moneda";
+$sql = "SELECT tp.idtb_plan,tp.descripcion,m.simbolo,ROUND(tp.costo),tp.cant_clases from tb_plan tp join tb_moneda m on m.id_moneda = tp.id_moneda order by tp.cant_clases DESC";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -43,8 +43,8 @@ $result = mysqli_query($conexion, $sql);
         <tr style="font-size: 13px; ">
             <td style="width: 10px; text-align:center; height:5px;"><?php echo utf8_encode($ver[0]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[1]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[2]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[3]); ?></td>
+            <td style="text-align: center;"><?php echo $ver[2].'. '.number_format($ver[3], 0, ",", ".");?></td>
+            <td style="text-align: center;"><?php echo strtoupper($ver[4]); ?></td>
 
             <td style="width: 10px; text-align:center">
                 <span class="btn btn-primary btn-xs">

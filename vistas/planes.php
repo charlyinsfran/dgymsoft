@@ -1,296 +1,326 @@
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="shortcut icon" href="../pictures/iconos/planes.png">
-        <title>Planes</title>
-        <?php 
-        require_once "menu.php";
-
-        require_once "../class/conexion.php";
-        $c = new conectar();
-        $conexion = $c->conexion();
-
-        $sql = "SELECT id_moneda,descripcion,simbolo from tb_moneda";
-        $result = mysqli_query($conexion, $sql);
-        $result2 = mysqli_query($conexion, $sql);
+<?php
+session_start();
+if (isset($_SESSION['usuario'])) {
+?>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../pictures/iconos/planes.png">
+    <title>Planes</title>
+    <?php 
+    require_once "menu.php";
 
-        ?>
+    require_once "../class/conexion.php";
+    $c = new conectar();
+    $conexion = $c->conexion();
 
-        <style>
-           .boton { display: inline-block;
-                outline: 0;
-                border: none;
-                cursor: pointer;
-                line-height: 1.0rem;
-                font-weight: 900;
-                background: #007a5a;
-                padding: 12px 14px 9px;
-                font-size: 12px;
-                border-radius: 6px;
-                color: #fff;
-                height: 36px;
-                transition: all 75ms ease-in-out;
-                :hover{
-                    box-shadow: 0 1px 4px rgb(0 0 0 / 50%);
-                }
-            }
-        </style>
-    </head>
+    $sql = "SELECT id_moneda,descripcion,simbolo from tb_moneda";
+    $result = mysqli_query($conexion, $sql);
+    $result2 = mysqli_query($conexion, $sql);
+
+
+
+    ?>
+
+    <style>
+     .boton { display: inline-block;
+        outline: 0;
+        border: none;
+        cursor: pointer;
+        line-height: 1.0rem;
+        font-weight: 900;
+        background: #007a5a;
+        padding: 12px 14px 9px;
+        font-size: 12px;
+        border-radius: 6px;
+        color: #fff;
+        height: 36px;
+        transition: all 75ms ease-in-out;
+        :hover{
+            box-shadow: 0 1px 4px rgb(0 0 0 / 50%);
+        }
+    }
+</style>
+</head>
 <br>
 <br>
-<br>
-<br>
-    <body>
-        <div class="col-sm-2">
-            <div class="container">
-                <div class="row"></div>
-            </div>
+
+<body>
+    <div class="col-sm-2">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <h3 style="text-align: center;">Planes</h3>
+
+        <span class="boton btn btn-primary" data-toggle="modal" data-target="#newplan">Nuevo Plan</span>
+        <div id="tableplanload" style="align-content:left;">
+
         </div>
 
-        <div class="col-sm-8">
-            <h3 style="text-align: center;">Planes</h3>
-            
-            <span class="boton btn btn-primary" data-toggle="modal" data-target="#newplan">Nuevo Plan</span>
-            <div id="tableplanload" style="align-content:left;">
+    </div>
 
-            </div>
+    <!-- MODAL PARA AGREGAR NUEVO PLAN	-->
 
-        </div>
-
-        <!-- MODAL PARA AGREGAR NUEVO PLAN	-->
-
-        <div class="modal fade" id="newplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Plan</h4>
-                    </div>
-                    <div class="modal-body">
+    <div class="modal fade" id="newplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">New Plan</h4>
+                </div>
+                <div class="modal-body">
 
 
-                        <form id="frm_planes">
-                            
-                            <label>Descripcion</label>
-                            <input type="text" class="form-control input-sm" id="descripcion" name="descripcion">
-                            <label>Moneda</label>
-                            <p></p>
-                            <select class="form-control input-sm" name="moneda" id="moneda" style="width: 250px;" required>
-                                <option value="A">Seleccione moneda:</option>
-                                <?php while ($view = mysqli_fetch_row($result)) : ?>
-                                    <option value="<?php echo $view[0] ?>"><?php echo $view[1] . ' - ' . $view[2]; ?></option>
-           
-                                <?php endwhile; ?>
-                            </select>
-                            <p></p>
-                            <label>Costo</label>
-                            <input type="text" class="form-control input-sm" id="costo" name="costo">
-                            <label>Clases/Dias</label>
-                            <input type="text" class="form-control input-sm" id="dias" name="dias">
-                        </form>
+                    <form id="frm_planes">
+
+                        <label>Descripcion</label>
+                        <input type="text" class="form-control input-sm" id="descripcion" name="descripcion">
+                        <label>Moneda</label>
+                        <p></p>
+                        <select class="form-control input-sm" name="moneda" id="moneda" style="width: 250px;" required>
+                            <option value="A">Seleccione moneda:</option>
+                            <?php while ($view = mysqli_fetch_row($result)) : ?>
+                                <option value="<?php echo $view[0] ?>"><?php echo $view[1] . ' - ' . $view[2]; ?></option>
+
+                            <?php endwhile; ?>
+                        </select>
+                        <p></p>
+                        <label>Costo</label>
+                        <input type="text" class="form-control input-sm" id="costo" name="costo">
+                        <label>Clases/Dias</label>
+                        <input type="text" class="form-control input-sm" id="dias" name="dias">
+                    </form>
 
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btnAddPlan" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-                        <a href="planes.php"> <span class="btn btn-danger">Cancelar</span></a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAddPlan" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                    <a href="planes.php"> <span class="btn btn-danger">Cancelar</span></a>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
         <!-- *************************************************************************
 **************************************************************************
 ********************************
 MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
-        <div class="modal fade" id="updateplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Update Planes</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form id="frm_planupdate">
-                            <input type="text" name="idee" id="idee" hidden>
-                           <label>Descripcion</label>
-                            <input type="text" class="form-control input-sm" id="descripcion_update" name="descripcion_update">
-                            <label>Moneda</label>
-                            <p></p>
-                            <select class="form-control input-sm" name="moneda_update" id="moneda_update" style="width: 250px;" required>
-                                <option value="A">Seleccione moneda:</option>
-                                <?php while ($view2 = mysqli_fetch_row($result2)) : ?>
-                                    <option value="<?php echo $view2[0] ?>"><?php echo $view2[1] . ' - ' . $view2[2]; ?></option>
-           
-                                <?php endwhile; ?>
-                            </select>
-                            <p></p>
-                            <label>Costo</label>
-                            <input type="text" class="form-control input-sm" id="costo_update" name="costo_update">
-                            <label>Clases/Dias</label>
-                            <input type="text" class="form-control input-sm" id="dias_update" name="dias_update">
-                        </form>
+<div class="modal fade" id="updateplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update Planes</h4>
+            </div>
+            <div class="modal-body">
+                <form id="frm_planupdate">
+                    <input type="text" name="idee" id="idee" hidden>
+                    <label>Descripcion</label>
+                    <input type="text" class="form-control input-sm" id="descripcion_update" name="descripcion_update">
+                    <label>Moneda</label>
+                    <p></p>
+                    <select class="form-control input-sm" name="moneda_update" id="moneda_update" style="width: 250px;" required>
+                        <option value="A">Seleccione moneda:</option>
+                        <?php while ($view2 = mysqli_fetch_row($result2)) : ?>
+                            <option value="<?php echo $view2[0] ?>"><?php echo $view2[1] . ' - ' . $view2[2]; ?></option>
+
+                        <?php endwhile; ?>
+                    </select>
+                    <p></p>
+                    <label>Costo</label>
+                    <input type="text" class="form-control input-sm" id="costo_update" name="costo_update">
+                    <label>Clases/Dias</label>
+                    <input type="text" class="form-control input-sm" id="dias_update" name="dias_update">
+                </form>
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btnUpdatePlan" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-                        <a href="planes.php"><span class="btn btn-danger">Cancelar</span></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnUpdatePlan" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                <a href="planes.php"><span class="btn btn-danger">Cancelar</span></a>
 
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-    </body>
+</body>
 
-    </html>
+</html>
 
-    <script>
-        $('#newplan').on('shown.bs.modal', function () { $('#descripcion').focus();}) 
+<script>
+    $('#newplan').on('shown.bs.modal', function () { $('#descripcion').focus();}) 
         //$('#actualizaCategorias').on('shown.bs.modal', function () { $('#categoriaupdate').focus();}) 
-    </script>
+</script>
+
+<script>
+    function clearSelectedOptions() {
+        $('#moneda').val(null).trigger('change');
+         $('#moneda_update').val(null).trigger('change');
+
+  }
+  
+      
+
+</script>
 
 <script>
     $(document).ready(function() {
-            $('#moneda').select2({
-                dropdownParent: $('#newplan')
-            });
-            $('#moneda_update').select2({
-                dropdownParent: $('#updateplan')
-            });
-            
+
+        
+        $('#moneda').select2({
+            dropdownParent: $('#newplan')
         });
+        $('#moneda_update').select2({
+            dropdownParent: $('#updateplan')
+        });
+
+    });
 </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#tableplanload').load("planesmod/tableplanes.php");
-            
-            $('#btnAddPlan').click(function() {
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableplanload').load("planesmod/tableplanes.php");
+        
+        $('#btnAddPlan').click(function() {
 
-                $vacios = validarFormVacio('frm_planes');
+            $vacios = validarFormVacio('frm_planes');
 
 
-                if (vacios > 0) {
-                    alertify.alert("No se permiten campos vacíos");
-                    return false;
-                }
+            if (vacios > 0) {
+                alertify.alert("No se permiten campos vacíos");
+                return false;
+            }
 
-                datos = $('#frm_planes').serialize();
-                $.ajax({
+            datos = $('#frm_planes').serialize();
+            $.ajax({
 
-                    type: "POST",
-                    data: datos,
-                    url: "../process/planes_actions/newplan.php",
-                    success: function(r) {
+                type: "POST",
+                data: datos,
+                url: "../process/planes_actions/newplan.php",
+                success: function(r) {
 
-                        if (r == 1) {
-                            alertify.success("Plan Registrado");
-                            $('#tableplanload').load("planesmod/tableplanes.php");
-                            $('#frm_planes')[0].reset();
-                            DataTable.reload();
+                    if (r == 1) {
+                        alertify.success("Plan Registrado");
+                        $('#tableplanload').load("planesmod/tableplanes.php");
+                        
+                        $('#frm_planes')[0].reset();
+                        DataTable.reload();
 
-                        } else {
-                            alertify.error("Error/Dato Duplicado");
-                        }
 
+                    } else {
+                        alertify.error("Error/Dato Duplicado");
                     }
-                });
+
+                }
             });
         });
-    </script>
+    });
+</script>
 
 
-    <script>
-        
-        function agregadato(idplan) {
+<script>
+
+    function agregadato(idplan) {
+        $.ajax({
+            type: "POST",
+            data: "idplan=" + idplan,
+            url: "../process/planes_actions/bringdataupdate.php",
+            success: function(r) {
+
+                dato = jQuery.parseJSON(r);
+
+                $('#idee').val(dato['idtb_plan']);
+                $('#descripcion_update').val(dato['descripcion']);
+                $('#moneda_update').val(dato['id_moneda']);
+                $('#costo_update').val(dato['costo']);
+                $('#dias_update').val(dato['cant_clases']);
+
+
+
+
+            }
+        });
+    }
+    
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+
+        $('#btnUpdatePlan').click(function() {
+
+            datos = $('#frm_planupdate').serialize();
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "../process/planes_actions/updateplan.php",
+                success: function(r) {
+
+
+                    if (r == 1) {
+                        alertify.success("Plan Actualizado");
+                        $('#tableplanload').load("planesmod/tableplanes.php");
+                        $('#frm_planes')[0].reset();
+
+                        DataTable.reload();
+
+
+                    } else {
+                        alertify.error("Error al Actualizar");
+                    }
+
+                }
+            });
+        });
+
+
+    });
+</script>
+
+
+<script>
+    function deleteplan(idplan) {
+        alertify.confirm('¿Desea eliminar?', function() {
             $.ajax({
                 type: "POST",
                 data: "idplan=" + idplan,
-                url: "../process/planes_actions/bringdataupdate.php",
+                url: "../process/planes_actions/deleteplan.php",
                 success: function(r) {
-
-                    dato = jQuery.parseJSON(r);
-
-                    $('#idee').val(dato['idtb_plan']);
-                    $('#descripcion_update').val(dato['descripcion']);
-                    $('#moneda_update').val(dato['id_moneda']);
-                    $('#costo_update').val(dato['costo']);
-                    $('#dias_update').val(dato['cant_clases']);
-                   
-                    
-                    
-
+                    if (r == 1) {
+                        $('#tableplanload').load("planesmod/tableplanes.php");
+                        $('#frm_planes')[0].reset();
+                        DataTable.reload();
+                    } else {
+                        alertify.error("No se pudo eliminar");
+                    }
                 }
             });
-        }
-    
-    </script>
-
-
-
-    <script>
-        $(document).ready(function() {
-          
-            $('#btnUpdatePlan').click(function() {
-
-                datos = $('#frm_planupdate').serialize();
-                $.ajax({
-                    type: "POST",
-                    data: datos,
-                    url: "../process/planes_actions/updateplan.php",
-                    success: function(r) {
-
-
-                        if (r == 1) {
-                            alertify.success("Plan Actualizado");
-                            $('#tableplanload').load("planesmod/tableplanes.php");
-                            $('#frm_planes')[0].reset();
-                            DataTable.reload();
-
-
-                        } else {
-                            alertify.error("Error al Actualizar");
-                        }
-
-                    }
-                });
-            });
-
-
+        }, function() {
+            alertify.error('Cancelo !')
         });
-    </script>
+
+    }
+</script>
 
 
-    <script>
-        function deleteplan(idplan) {
-            alertify.confirm('¿Desea eliminar?', function() {
-                $.ajax({
-                    type: "POST",
-                    data: "idplan=" + idplan,
-                    url: "../process/planes_actions/deleteplan.php",
-                    success: function(r) {
-                        if (r == 1) {
-                            $('#tableplanload').load("planesmod/tableplanes.php");
-                            $('#frm_planes')[0].reset();
-                            DataTable.reload();
-                        } else {
-                            alertify.error("No se pudo eliminar");
-                        }
-                    }
-                });
-            }, function() {
-                alertify.error('Cancelo !')
-            });
 
-        }
-    </script>
+
+
+<?php
+} else {
+    header("location:../index.php");
+}
+?>

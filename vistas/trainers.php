@@ -1,4 +1,10 @@
 
+<?php
+session_start();
+if (isset($_SESSION['usuario'])) {
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -389,3 +395,12 @@ function eliminatrainer(ide) {
 
         }
 </script>
+
+
+
+
+<?php
+} else {
+    header("location:../index.php");
+}
+?>

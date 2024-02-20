@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="imagenes/login.png">
+    <link rel="shortcut icon" href="pictures/images/contrasena.png">
     <link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="libraries/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="libraries/alertifyjs/css/themes/default.css">
@@ -27,7 +27,7 @@ background-size: cover;width: 100%;">
                 <div class="panel panel-body" align="center">
                 <p><img src="pictures/backgrounds/logotipo.jpg" height="220" width="280" style="text-align: center;"></p>
 
-                <form id="frm_login" action="procesos/reglogin/login.php" method="POST">
+                <form id="frm_login" action="process/login/login.php" method="POST">
                 <div class="col-sm-12">
              
                 <input type="text" class="form-control input-sm" name="usuario" id="usuario" 
@@ -44,6 +44,7 @@ background-size: cover;width: 100%;">
                 <span class="btn btn-primary btn-md glyphicon glyphicon-log-in" id="entrarSistema" 
                 style="text-align: center; width: 180px; border: none; padding: 5px 5px;background: background: #3498db;"> 
                 <label style="font-size: 20px;"> Entrar</label></span>
+
                 
                 </div>
 
@@ -74,8 +75,6 @@ background-size: cover;width: 100%;">
 
 <script>
 
-
-
     $('#entrarSistema').click(function(){
         vacios = validarFormVacio('frm_login');
 
@@ -92,11 +91,12 @@ datos=$('#frm_login').serialize();
 $.ajax({
     type:"POST",
     data:datos,
-    url:"procesos/reglogin/login.php",
+    url:"process/loginact/login.php",
     success:function(r){
 
         if(r==1){
-            window.location = "vistas/aperturacaja.php";
+            
+            window.location = "vistas/inicio.php";
             //$('#frm_login')[0].reset();
         }else{
             alertify.error("Datos Incorrectos");
@@ -109,7 +109,7 @@ $.ajax({
 
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
 window.onkeydown = presionarenter;
 
@@ -126,11 +126,11 @@ function presionarenter(){
     $.ajax({
         type:"POST",
         data:datos,
-        url:"procesos/reglogin/login.php",
+        url:"process/loginact/login.php",
         success:function(r){
 
             if(r==1){
-                window.location = "vistas/aperturacaja.php";
+                window.location = "vistas/inicio.php";
                 //$('#frm_login')[0].reset();
             }else{
                 alertify.error("Datos Incorrectos");

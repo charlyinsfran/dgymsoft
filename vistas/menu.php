@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INICIO</title>
 <?php
-
-  require_once "dependencias.php";
-  /*require_once "../clases/Conexion.php";
   
-  $obj = new conectar();
+  require_once "dependencias.php";
+  require_once "../class/conexion.php";
+  
+  $c = new conectar();
+  $conexion = $c->conexion();
+
   $sesion = $_SESSION['usuario'];
-  $tipo = $_SESSION['tipousuario'];*/
+  $tipo = $_SESSION['tipousuario'];
 
   ?>
 
@@ -41,7 +43,7 @@
 
           <ul class="nav navbar-nav navbar-right">
 
-            <li><a href=""><span class="glyphicon glyphicon-scale"
+            <li><a href="inicio.php"><span class="glyphicon glyphicon-scale"
              data-toggle="modal" data-target="#presentacion"></span> Inicio </a></li>
 
 
@@ -54,7 +56,7 @@
                   <p></p>
                 </span> Clientes <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="Registro de Datos">Registro de Datos</a></li>
+                <li><a href="clientes.php">Registro de Datos</a></li>
                 <li><a href="Ficha Clientes">Ficha Cliente</a></li>
                 
 
@@ -89,10 +91,10 @@
           <li class="dropdown">
             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-user"></span> <strong style="text-decoration: underline;">Usuario:</strong> 
-              <?php /*echo strtoupper($_SESSION['usuario']);*/?> <span class="caret">
+              <?php echo strtoupper($_SESSION['usuario']);?> <span class="caret">
               </span></a>
             <ul class="dropdown-menu">
-              <li> <a style="color: red" href="../procesos/salir.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+              <li> <a style="color: red" href="../process/close.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
             </li>    
             </ul>
           </li>
