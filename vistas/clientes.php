@@ -36,7 +36,7 @@ if (isset($_SESSION['usuario'])) {
         ?>
 
         <style>
-         .boton { display: inline-block;
+           .boton { display: inline-block;
             outline: 0;
             border: none;
             cursor: pointer;
@@ -271,77 +271,77 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
         //imc: obesidad
         if(imc > 30){
-             form.imc.style.color="#cb4335";
-        }
+           form.imc.style.color="#cb4335";
+       }
         //imc: sobrepeso
-        else if(imc < 29.9 && imc > 25){
-            form.imc.style.color=" #d35400";
-        }
-        //imc: peso normal
-        else if(imc < 24.9 && imc > 18.5 ){
-            form.imc.style.color="#27ae60";
-        }
-        else if(imc < 18.5){
-            form.imc.style.color=" #e74c3c";
-        }
-        document.getElementById('imc').value = imc.toFixed(2);
+       else if(imc < 29.9 && imc > 25){
+        form.imc.style.color=" #d35400";
     }
+        //imc: peso normal
+    else if(imc < 24.9 && imc > 18.5 ){
+        form.imc.style.color="#27ae60";
+    }
+    else if(imc < 18.5){
+        form.imc.style.color=" #e74c3c";
+    }
+    document.getElementById('imc').value = imc.toFixed(2);
+}
 
 
-    function sumarupdate() {
-        form2 = document.querySelector('#frm_clientesupdate');
-        var peso = document.getElementById('peso_update').value;
-        var altura = document.getElementById('altura_update').value;
-        if(peso > 0 || peso != ""){
+function sumarupdate() {
+    form2 = document.querySelector('#frm_clientesupdate');
+    var peso = document.getElementById('peso_update').value;
+    var altura = document.getElementById('altura_update').value;
+    if(peso > 0 || peso != ""){
 
-            if(altura > 0 || altura != ""){
-                var imc = peso/(altura * altura);
-            }else {
-                document.getElementById('imc_update').value = "";
-                document.getElementById('imc_update').value = 0;       
-            }   
+        if(altura > 0 || altura != ""){
+            var imc = peso/(altura * altura);
+        }else {
+            document.getElementById('imc_update').value = "";
+            document.getElementById('imc_update').value = 0;       
+        }   
 
-        }else{
-            alertify.alert("Debe ingresar el peso");
-        }
+    }else{
+        alertify.alert("Debe ingresar el peso");
+    }
 
 
         //imc: obesidad
-        if(imc > 30){
-             form2.imc_update.style.color="#cb4335";
-        }
+    if(imc > 30){
+       form2.imc_update.style.color="#cb4335";
+   }
         //imc: sobrepeso
-        else if(imc < 29.9 && imc > 25){
-            form2.imc_update.style.color=" #d35400";
-        }
+   else if(imc < 29.9 && imc > 25){
+    form2.imc_update.style.color=" #d35400";
+}
         //imc: peso normal
-        else if(imc < 24.9 && imc > 18.5 ){
-            form2.imc_update.style.color="#27ae60";
-        }
-        else if(imc < 18.5){
-            form2.imc_update.style.color=" #e74c3c";
-        }
+else if(imc < 24.9 && imc > 18.5 ){
+    form2.imc_update.style.color="#27ae60";
+}
+else if(imc < 18.5){
+    form2.imc_update.style.color=" #e74c3c";
+}
 
-        document.getElementById('imc_update').value = imc.toFixed(2);
-    }
+document.getElementById('imc_update').value = imc.toFixed(2);
+}
 </script>
 
 <script>
- formulario = document.querySelector('#frm_clientes');
- formulario.cedula.addEventListener('keypress', function(e) {
+   formulario = document.querySelector('#frm_clientes');
+   formulario.cedula.addEventListener('keypress', function(e) {
     if (!soloNumeros(event)) {
         alertify.alert("solo se permiten numeros");
         e.preventDefault();
     }})
 
- formulario.telefono.addEventListener('keypress', function(e) {
+   formulario.telefono.addEventListener('keypress', function(e) {
     if (!soloNumeros(event)) {
         alertify.alert("solo se permiten numeros");
         e.preventDefault();
     }})
 
     //Solo permite introducir numeros.
- function soloNumeros(e) {
+   function soloNumeros(e) {
     var key = e.charCode;
     return key >= 48 && key <= 57;}
 </script>
@@ -448,7 +448,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                 success: function(r) {
                     if (r == 1) {
                         $('#frm_clientesupdate')[0].reset();
-                       $('#tableclientesload').load("clientesmod/table_clientes.php");
+                        $('#tableclientesload').load("clientesmod/table_clientes.php");
                         alertify.success("Actualizado!!");
                         DataTable.reload();
                     } else {
@@ -465,16 +465,15 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
 <script>
 
-    function eliminatrainer(ide) {
+    function eliminacliente(ide) {
         alertify.confirm('¿Desea eliminar?', function() {
             $.ajax({
                 type: "POST",
                 data: "ide=" + ide,
-                url: "../process/trainers_actions/deletedata.php",
+                url: "../process/clientes_actions/deletedata.php",
                 success: function(r) {
                     if (r == 1) {
-
-                        $('#tabletrainerload').load("trainermod/tabla_trainers.php");
+                        $('#tableclientesload').load("clientesmod/table_clientes.php");
                         alertify.success("Registro Eliminado");
                     } else {
                         alertify.error("No se pudo eliminar");

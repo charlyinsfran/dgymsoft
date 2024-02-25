@@ -13,16 +13,18 @@
     <script src="libraries/alertifyjs/alertify.js"></script>
     <title>LOGIN</title>
 </head>
-<body style="background-image: url(pictures/backgrounds/fondo_login.jpg); background-position: center; background-repeat: no-repeat; 
-background-size: cover;width: 100%;">
+<body style="background-image: url(pictures/backgrounds/fondo_login.jpg);background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh;">
 
 <br><br><br>
 
-<div class="container">
+<div class="container" style="padding-top: 150px;" >
     <div class="row">
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <div class="panel" style="width: 350px;">
+            <div class="panel" style="width: 500px; ">
                 <div class="panel panel-heading" style="text-align: center;">DMARKET - DCHR_SOFT &COPY;</div>
                 <div class="panel panel-body" align="center">
                 <p><img src="pictures/backgrounds/logotipo.jpg" height="220" width="280" style="text-align: center;"></p>

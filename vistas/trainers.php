@@ -102,7 +102,7 @@ if (isset($_SESSION['usuario'])) {
 
                         ?>
 
-                        <input type="text" name="id" value="<?php echo $ide;?>" hidden>
+                        <input type="text" name="id" value="<?php echo $ide;?>" hidden >
                         <label>Nombre</label>
                         <div class="input-group">
                             <input name="nombre" id="nombre" type="text" required class="form-control inp" placeholder="Nombre">
@@ -277,7 +277,6 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tabletrainerload').load("trainermod/tabla_trainers.php");
-
         $('#btnAddTrainer').click(function() {
 
             $vacios = validarFormVacio('frm_trainers');
@@ -304,6 +303,8 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                         $('#frm_trainers')[0].reset();
                         $('#tabletrainerload').load("trainermod/tabla_trainers.php");
                         alertify.success("Agregado con exito");
+                        window.location = "trainers.php";
+
 
                 }
             });

@@ -59,7 +59,62 @@ public function actualizardatos($datos){
     }
 
 
+
+
+    public function eliminar($id){
+        $c = new conectar();
+        $conexion=$c->conexion();
+
+        $idimagen = self::obtenIdImg($id);
+        $sql = "DELETE FROM tb_clientes where id_clientes = '$id'";
+        $result =  mysqli_query($conexion,$sql);
+
+        if($result){
+            $ruta = self::obtenRutaImagen($idimagen);
+            $sql = "DELETE FROM tb_photos where id_photos = '$idimagen'";
+            $result =  mysqli_query($conexion,$sql);
+
+            if($result){
+                if(unlink($ruta)){
+                    return 1;
+                }
+            }
+
+
+        }
+    }
+
+/*codigo para obtener datos de imagen */
+
+    public function obtenIdImg($ide){
+        $c= new conectar();
+        $conexion=$c->conexion();
+
+        $sql="SELECT tb_photos
+                from tb_clientes 
+                where id_clientes='$ide'";
+        $result=mysqli_query($conexion,$sql);
+
+        return mysqli_fetch_row($result)[0];
+    }
+
+    public function obtenRutaImagen($idImg){
+        $c= new conectar();
+        $conexion=$c->conexion();
+
+        $sql="SELECT ruta_subida 
+                from tb_photos
+                where id_photos='$idImg'";
+
+        $result=mysqli_query($conexion,$sql);
+
+        return mysqli_fetch_row($result)[0];
+    }
+
 }
+
+
+
 
 
 

@@ -45,11 +45,22 @@
 
             <li><a href="inicio.php"><span class="glyphicon glyphicon-scale"
              data-toggle="modal" data-target="#presentacion"></span> Inicio </a></li>
-
-
             </li>
-            <li><a href="trainers.php"><span class="glyphicon glyphicon-object-align-horizontal"></span> Entrenadores </a>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class=" glyphicon glyphicon-unchecked">
+                  <p></p>
+                </span> Training <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="trainers.php">Entrenadores</a></li>
+                <li><a href="routines.php">Routines</a></li>
+                
+
+              </ul>
             </li>
+           
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-qrcode">

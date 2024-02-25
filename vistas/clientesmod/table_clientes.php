@@ -80,7 +80,7 @@ $result = mysqli_query($conexion, $sql);
                 </td>
                 <td style="width: 20px; text-align:center">
                     <span class="btn btn-danger btn-xs" >
-                        <span onclick="eliminatrainer('<?php echo $ver[0] ?>')"> Eliminar</span>
+                        <span onclick="eliminacliente('<?php echo $ver[0] ?>')"> Eliminar</span>
                     </span>
 
                 </td>
