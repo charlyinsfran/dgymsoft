@@ -213,7 +213,6 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                     if (r == 1) {
                         alertify.success("Plan Registrado");
                         $('#tableplanload').load("planesmod/tableplanes.php");
-                        
                         $('#frm_planes')[0].reset();
                         DataTable.reload();
 
@@ -274,7 +273,6 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                         alertify.success("Plan Actualizado");
                         $('#tableplanload').load("planesmod/tableplanes.php");
                         $('#frm_planes')[0].reset();
-
                         DataTable.reload();
 
 

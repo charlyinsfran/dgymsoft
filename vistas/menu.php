@@ -92,8 +92,8 @@
 
 
                 <li>
-                  <a href="">Generar Pago</a>
-                  <a href="compras.php">Dar de Baja</a>
+                  <a href="pagos.php">Generar Pago</a>
+                  <a href="">Dar de Baja</a>
                 </li>
 
             </li>
