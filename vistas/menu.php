@@ -47,6 +47,8 @@
              data-toggle="modal" data-target="#presentacion"></span> Inicio </a></li>
             </li>
 
+            <?php if($sesion == "trainer" || $sesion == "admin"){ ?>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class=" glyphicon glyphicon-unchecked">
@@ -55,10 +57,10 @@
               <ul class="dropdown-menu">
                 <li><a href="trainers.php">Entrenadores</a></li>
                 <li><a href="routines.php">Routines</a></li>
-                
-
               </ul>
             </li>
+
+          <?php } ?>
            
 
             <li class="dropdown">
@@ -68,17 +70,28 @@
                 </span> Clientes <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="clientes.php">Registro de Datos</a></li>
-                <li><a href="Ficha Clientes">Ficha Cliente</a></li>
+                <li><a href="ficha_paciente.php">Ficha</a></li>
+                <li><a href="reportes.php">Reportes</a></li>
+              
+              </ul>
+            </li>
+            
+           <?php if($sesion == "admin") {?>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-cog">
+                  <p></p>
+                </span> Config. <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="usuarios.php">Usuarios</a></li>
+                <li><a href="operaciones_database.php">Backup/Restore</a></li>
                 
-
               </ul>
             </li>
 
-
-            <li><a href="usuarios.php"><span class="glyphicon glyphicon-user"></span>Usuarios</a>
-            </li>
+          <?php } ?>
         
-            <li><a href="planes.php"><span class="glyphicon glyphicon-th-large"></span> Planes </a>
+            <li><a href="planes.php"><span class="glyphicon glyphicon-th-large"></span> Plans </a>
             </li>
 
 
@@ -93,7 +106,7 @@
 
                 <li>
                   <a href="pagos.php">Generar Pago</a>
-                  <a href="">Dar de Baja</a>
+                  <a href="self_clientedow.php">Dar de Baja</a>
                 </li>
 
             </li>

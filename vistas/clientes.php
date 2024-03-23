@@ -245,6 +245,10 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
     </div>
 </div>
 
+
+<!-- ////////////////////////////////////////////////////////////////////////////////-->
+
+
 </body>
 
 </html>
@@ -483,6 +487,32 @@ document.getElementById('imc_update').value = imc.toFixed(2);
         }, function() {
             alertify.error('Cancelo !')
         });
+
+    }
+</script>
+
+
+<script>
+
+    function cambiarestado(ide) {
+
+        alertify.confirm('¿Desea Inhabilitar Cliente?', function() {
+            $.ajax({
+                type: "POST",
+                data: "ide=" + ide,
+                url: "../process/clientes_actions/change_status.php",
+                success: function(r) {
+                    if (r == 1) {
+                        $('#tableclientesload').load("clientesmod/table_clientes.php");
+                        DataTable.reload();
+                    } else {
+                        
+                    }
+                }
+            });
+      }, function() {
+            alertify.error('Accion anulada')
+        });  
 
     }
 </script>

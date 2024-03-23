@@ -19,6 +19,20 @@ public function anularpago($id){
     return mysqli_query($conexion,$sql);
 }
 
+public function bajacliente($ide){
+    
+
+		$c = new conectar();
+		$conexion=$c->conexion();
+
+		$sql = "UPDATE tb_clientes SET estado = 'INACTIVO'
+         WHERE id_clientes = '$ide'";
+
+		echo mysqli_query($conexion,$sql);
+	
+	
+}
+
 
 
 

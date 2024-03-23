@@ -1,15 +1,13 @@
 <?php
-session_start();
+
 require_once "../../class/conexion.php";
-if (isset($_SESSION['usuario'])) {
-    $session = $_SESSION['usuario'];
 
 
 $c = new conectar();
 $conexion = $c->conexion();
 
 $sql = "SELECT cl.id_clientes,cl.nombre,cl.apellido,cl.cedula,cl.ocupacion,(YEAR(curdate())-YEAR(cl.fecha_nac)),cl.email,c.descripcion,cl.telefono,cl.direccion,cl.altura,cl.peso,cl.imc,cl.estado
-FROM tb_clientes cl JOIN tb_ciudades c on cl.tb_ciudades = c.id_ciudades where cl.estado = 'ACTIVO' ";
+FROM tb_clientes cl JOIN tb_ciudades c on cl.tb_ciudades = c.id_ciudades  where cl.estado = 'ACTIVO' ";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -29,12 +27,9 @@ $result = mysqli_query($conexion, $sql);
             <td style="text-align: center;">Ciudad</td>
             <td style="text-align: center;">Telefono</td>
             <td style="text-align: center;">Direccion</td>
-            <td style="text-align: center;">Altura</td>
-            <td style="text-align: center;">Peso</td>
-            <td style="text-align: center;">IMC</td>
             <td style="text-align: center;">Estado</td>
-            <td>Editar</td>
-           <?php if($session == "admin"){ ?> <td>Borrar</td> <?php } ?>
+            <td>Accion</td>
+            
         </tr>
     </thead>
 
@@ -66,29 +61,14 @@ $result = mysqli_query($conexion, $sql);
                 <td style="text-align: center;"><?php echo strtoupper($ver[7]); ?></td>
                 <td style="text-align: center;"><?php echo $ver[8]; ?></td>
                 <td style="text-align: center;"><?php echo $ver[9]; ?></td>
-                <td style="text-align: center;"><?php echo $ver[10]; ?></td>
-                <td style="text-align: center;"><?php echo $ver[11]; ?></td>
-                <td style="text-align: center;"><?php echo $ver[12]; ?></td>
-                <td style="text-align: center;"><span class="btn btn-xs btn-success" onclick="/*cambiarestado('<?php echo $ver[0] ?>')*/"><?php echo $ver[13]; ?></span></td>
+                <td style="text-align: center;"><?php echo $ver[13]; ?></td>
 
-
-                <td style="width: 10px; text-align:center">
-                    <span class="btn btn-primary btn-xs">
-                        <span  
-                        data-toggle="modal" data-target="#update_cliente" 
-                        onclick="agregadato('<?php echo $ver[0] ?>')"> Modificar</span>
-                    </span>
-
-                </td>
-                <?php if($session == "admin"){ ?>
                 <td style="width: 20px; text-align:center">
                     <span class="btn btn-danger btn-xs" >
-                        <span onclick="eliminacliente('<?php echo $ver[0] ?>')"> Eliminar</span>
+                        <span onclick="bajacliente('<?php echo $ver[0] ?>')"> Dar de baja</span>
                     </span>
 
                 </td>
-
-            <?php } ?>
             </tr>
 
 
@@ -127,7 +107,3 @@ $result = mysqli_query($conexion, $sql);
 
    });
 </script>
-
-
-
-<?php } ?>

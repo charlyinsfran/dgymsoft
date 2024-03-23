@@ -13,33 +13,33 @@
     <script src="libraries/alertifyjs/alertify.js"></script>
     <title>LOGIN</title>
 </head>
-<body style="background-image: url(pictures/backgrounds/fondo_login.jpg);background-size: cover;
+<body style="background-image: url(pictures/backgrounds/fondogym.jpg);background-size: cover;
       background-repeat: no-repeat;
       margin: 0;
       height: 100vh;">
 
 <br><br><br>
 
-<div class="container" style="padding-top: 150px;" >
+<div class="container" style="padding-top: 50px;" >
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <div class="panel" style="width: 500px; ">
+            <div class="panel" style="width: 450px; ">
                 <div class="panel panel-heading" style="text-align: center;">DMARKET - DCHR_SOFT &COPY;</div>
                 <div class="panel panel-body" align="center">
-                <p><img src="pictures/backgrounds/logotipo.jpg" height="220" width="280" style="text-align: center;"></p>
+                <p><img src="pictures/images/home.png" height="220" width="280" style="text-align: center;"></p>
 
                 <form id="frm_login" action="process/login/login.php" method="POST">
                 <div class="col-sm-12">
              
                 <input type="text" class="form-control input-sm" name="usuario" id="usuario" 
                 style="text-align: center; height: 40px; outline: none; border: none;
-                 border-bottom: solid 0.5px; padding: 0 5px; font-size: 18px; font-weight: bold;color: #000000;" placeholder="usuario">
+                 border-bottom: solid 0.5px; padding: 0 5px; font-size: 15px; font-weight: bold;color: #000000;" placeholder="USUARIO">
                 <p></p>
                
                 <input type="password" class="form-control input-sm" name="password" id="password" 
                 style="text-align: center; height: 40px; outline: none; border: none;
-                 border-bottom: solid 0.5px; padding-left: 20px; font-size: 18px;  font-weight: bold; color: #000000;" placeholder="password">
+                 border-bottom: solid 0.5px; padding-left: 20px; font-size: 15px;  font-weight: bold; color: #000000;" placeholder="PASSWORD">
                 <p></p>
                 </div>
                 <div class="col-sm-12" align="center">

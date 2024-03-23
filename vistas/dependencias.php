@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" type="text/css" href="../libraries/DataTables/css/buttons.dataTables.min.css" >
 <link rel="stylesheet" type="text/css" href="../libraries/Datatables/css/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../libraries/font-awesome/css/all.css">
 
 
 
@@ -34,3 +35,4 @@
 <script src="../libraries/DataTables/js/vfs_fonts.js"></script>
 <script src="../libraries/DataTables/js/buttons.html5.min.js"></script>
 <script src="../libraries/graficos/plotly-latest.min.js"></script>
+<script src="../libraries/font-awesome/js/fontawesome.js"></script>

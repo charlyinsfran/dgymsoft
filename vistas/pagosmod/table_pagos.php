@@ -14,7 +14,7 @@ join tb_moneda m on m.id_moneda = p.id_moneda;";
 
 $result = mysqli_query($conexion, $sql);
 
-$cadena = "";
+
 
 
 
@@ -22,7 +22,7 @@ $cadena = "";
 ?>
 
 
-<table class="table table-hover table-condensed table-bordered display" id="tabladinamica">
+<table class="table table-hover table-condensed table-bordered display" id="tabladinamica" style="font-size: 15px;">
     <br>
 
 
@@ -38,12 +38,14 @@ $cadena = "";
 
 
             <td>Operacion</td>
+            <td>Print</td>
+
 
         </tr>
     </thead>
 
 
-    <tbody>
+    <tbody style="font-size: 10px;">
 
 
         <?php
@@ -54,15 +56,19 @@ $cadena = "";
 
             $fact_db = $ver[0];
             if($fact_db < 10){
-                $cadena = "001-001-001-000".$fact_db;
+                $cadena = "000";
+            }else if($fact_db >= 10 && $fact_db < 100){
+                $cadena = "00";
+            }else if($fact_db >= 100 && $fact_db < 1000){
+                $cadena = "0";
             }
 
 
 
             ?>
 
-            <tr style="font-size: 14px; width: 1%; white-space: nowrap; text-align: center;">
-                <td><?php echo $cadena; ?></td>
+            <tr style="font-size: 12px; width: 1%; white-space: nowrap; text-align: center;">
+                <td><?php echo $cadena.$ver[0]; ?></td>
                 <td><?php echo $ver[1]; ?></td>
                 <td><?php echo strtoupper($ver[2]); ?></td>
                 <td><?php echo $ver[6].'. '.number_format($ver[3], 0, ",", "."); ?></td>
@@ -75,6 +81,12 @@ $cadena = "";
                 <span  
                  
                 onclick="anularpago('<?php echo $ver[0] ?>')"> Anular</span>
+            </span>
+
+        </td>
+        <td style="width: 10px; text-align:center">
+            <span class="btn btn-default btn-xs">
+                <a href="model_print.php?dato=<?php echo $ver[0];?>"><span data-toggle="modal" data-target="#impresion_modal"> Imprimir Factura</span></a>
             </span>
 
         </td>

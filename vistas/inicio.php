@@ -18,6 +18,10 @@ if (isset($_SESSION['usuario'])) {
   $sql = "SELECT count(id_clientes) from tb_clientes";
   $result_clientes = mysqli_query($conexion, $sql);
 
+
+  $sql = "SELECT SUM(montopagado) from tb_pagos WHERE MONTH(fecha_actual) = MONTH(CURRENT_DATE())";
+  $result_pagos = mysqli_query($conexion, $sql);
+
   
 
 ?>
@@ -45,6 +49,7 @@ if (isset($_SESSION['usuario'])) {
    	
     <div class="container" id="container">
       <div class="row" style="width: 1200px; margin-top:-5em;">
+        
         <div class="col-lg-3 col-sm-6">
           <div class="circle-tile">
             <a href="#">
@@ -75,6 +80,20 @@ if (isset($_SESSION['usuario'])) {
             </div>
           </div>
         </div>
+
+        <div class="col-lg-3 col-sm-6">
+          <div class="circle-tile ">
+            <a href="#">
+              <div class="circle-tile-heading green"><i class="glyphicon glyphicon-usd gi-1" style="padding-top: 10px;"></i></div>
+            </a>
+            <div class="circle-tile-content green">
+              <div class="circle-tile-description text-faded"> Pagos del Mes </div>
+              <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($result_pagos)) : echo 'GS. ' . number_format($ver[0], 0, ",", ".");
+                                                          endwhile; ?></div>
+              <a class="circle-tile-footer" href="view_compras.php">Ver<i class=""></i></a>
+            </div>
+          </div>
+        </div>
         
      
 
@@ -83,65 +102,8 @@ if (isset($_SESSION['usuario'])) {
       </div>
 
 
-      <div class="row" style="width: 1000px; height: 52%;">
-
-        <div class="col-sm-12">
-
-
-          <div class="panel">
-
-            <div class="panel panel-body">
-
-              <div class="row">
-                <div class="col-sm-6">
-
-                  <div id="graficolineal"></div>
-                </div>
-                <div class="col-sm-6">
-
-                  <div id="graficobarras"></div>
-
-
-                </div>
-              </div>
-
-              <div class="row">
-
-
-                <div class="col-sm-4">
-
-                  <div id="graficocircular"></div>
-                </div>
-              </div>
-
-
-
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </body>
-
-  </html>
-
-  <script>
-    $(document).ready(function() {
-      /*$('#graficolineal').load('graficos/ventas.php');
-      $('#graficobarras').load('graficos/compras.php');
-      $('#graficocircular').load('graficos/productosvend.php');
-      $('#productosmin').load('graficos/productosmin.php');*/
-    });
-  </script>
-
-
 <?php
 } else {
   header("location:../index.php");
 }
-?>>
+?>

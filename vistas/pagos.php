@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 if (isset($_SESSION['usuario'])) {
     ?>
 
@@ -17,7 +18,7 @@ if (isset($_SESSION['usuario'])) {
         $c = new conectar();
         $conexion = $c->conexion();
 
-        $sql = "SELECT id_clientes,nombre,apellido,cedula from tb_clientes";
+        $sql = "SELECT id_clientes,nombre,apellido,cedula from tb_clientes where estado = 'ACTIVO'";
         $result = mysqli_query($conexion, $sql);
 
         $sql_plan = "SELECT pl.idtb_plan,pl.descripcion,mon.simbolo,pl.costo from tb_plan pl join tb_moneda mon on pl.id_moneda = mon.id_moneda";
@@ -35,7 +36,7 @@ if (isset($_SESSION['usuario'])) {
         ?>
 
         <style>
-           .boton { display: inline-block;
+         .boton { display: inline-block;
             outline: 0;
             border: none;
             cursor: pointer;
@@ -100,34 +101,34 @@ if (isset($_SESSION['usuario'])) {
 
 
                         <?php while ($v = mysqli_fetch_row($query)) : 
-                        $valor = $v[0];
+                            $valor = $v[0];
 
-                    endwhile;
+                        endwhile;
 
-                    if($valor>0 && $valor!= "null"){
-                        $print = $valor + 1;
-                    }
-                    else {
-                        $print = 1;
-                    } 
+                        if($valor>0 && $valor!= "null"){
+                            $print = $valor + 1;
+                        }
+                        else {
+                            $print = 1;
+                        } 
 
 
-                    if($print < 9){
-                        $dato = "000";
-                    }else if($print > 9 && $print < 99){
-                        $dato = "00";
-                    }else if($print > 99 && $print < 999){
-                        $dato = "0";
-                    }
+                        if($print < 9){
+                            $dato = "000";
+                        }else if($print > 9 && $print < 99){
+                            $dato = "00";
+                        }else if($print > 99 && $print < 999){
+                            $dato = "0";
+                        }
 
-                    ?>
+                        ?>
 
                         <label>Pago Nro</label>
                         <p></p>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="" value="001-001-001-" readonly>
+                            <input type="text" class="form-control"  value="001-001-001-" readonly>
                             <span class="input-group-addon" style="width: -10%"></span>
-                            <input type="text"  class="form-control" id="factura" name="factura" value="<?php echo $dato.$print; ?>" placeholder="">
+                            <input type="text"  class="form-control" id="factura" name="factura" value="<?php echo $dato.$print; ?>">
                         </div>
                         
                         <p></p>
@@ -184,15 +185,17 @@ if (isset($_SESSION['usuario'])) {
 
         <!-- *************************************************************************
 **************************************************************************
-********************************
-MODAL PARA ACTUALIZAR                                      -->
-
+********************************                                     -->
 
 
 
 </body>
 
 </html>
+
+
+
+
 
 <!--          funcion para convertir a decimales al tipea -->
 <script>
@@ -290,7 +293,7 @@ MODAL PARA ACTUALIZAR                                      -->
 
 
 <script>
-    
+
     formulario = document.querySelector('#frm_pagos');
     formulario.monto.addEventListener('keypress', function(e) {
         if (!soloNumeros(event)) {

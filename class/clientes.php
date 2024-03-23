@@ -46,6 +46,8 @@ public function obtenerdatos($ide){
 
     }
 
+    
+
 public function actualizardatos($datos){
 
         $c = new conectar();
@@ -109,6 +111,17 @@ public function actualizardatos($datos){
         $result=mysqli_query($conexion,$sql);
 
         return mysqli_fetch_row($result)[0];
+    }
+
+
+
+    public function cambiarestado($ide){
+
+        $c = new conectar();
+        $conexion = $c->conexion();
+        $sql = "UPDATE tb_clientes  SET estado = 'INACTIVO' where id_clientes = '$ide'";
+       return mysqli_query($conexion,$sql);
+
     }
 
 }
