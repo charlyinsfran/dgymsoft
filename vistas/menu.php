@@ -12,6 +12,7 @@
   
   $c = new conectar();
   $conexion = $c->conexion();
+  $iduser = $_SESSION['iduser'];
 
   $sesion = $_SESSION['usuario'];
   $tipo = $_SESSION['tipousuario'];
@@ -47,7 +48,7 @@
              data-toggle="modal" data-target="#presentacion"></span> Inicio </a></li>
             </li>
 
-            <?php if($sesion == "trainer" || $sesion == "admin"){ ?>
+            <?php if($sesion == "trainer" || $sesion == "admin" || $sesion == "ADMIN"){ ?>
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

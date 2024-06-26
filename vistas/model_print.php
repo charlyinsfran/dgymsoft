@@ -118,7 +118,7 @@ function imprimir(){
     $pdf->Ln(5);
 
     $pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","Cliente: ".$nombrecliente),0,'C',false);
-    $pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","Documento: ".$cedula),0,'C',false);
+    $pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","Documento: ".number_format($cedula, 0, ",", ".")),0,'C',false);
     $pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","Tipo de Plan: ".strtoupper($plan)),0,'C',false);
     $pdf->Ln(3);
 
@@ -169,7 +169,7 @@ function imprimir(){
 
     # Codigo de barras #
      $pdf->Ln(5);
-    $pdf->Code128(5,$pdf->GetY(),"Factura: ".$pago_id,70,20);
+    $pdf->Code128(5,$pdf->GetY(),"Factura: ".$mostrar_factura." P-> ".$plan,70,20);
     $pdf->SetXY(0,$pdf->GetY()+21);
     $pdf->SetFont('Arial','',10);
     //$pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","COD000001V0001"),0,'C',false);

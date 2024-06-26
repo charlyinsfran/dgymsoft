@@ -25,7 +25,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <div class="panel" style="width: 450px; ">
-                <div class="panel panel-heading" style="text-align: center;">DMARKET - DCHR_SOFT &COPY;</div>
+                <div class="panel panel-heading" style="text-align: center;">DGYMSOFT - DCHR_SOFT &COPY;</div>
                 <div class="panel panel-body" align="center">
                 <p><img src="pictures/images/home.png" height="220" width="280" style="text-align: center;"></p>
 

@@ -205,6 +205,7 @@ if (isset($_SESSION['usuario'])) {
                         <p></p>
                         <label>Descanso entre series (min)</label>
                         <input type="text" min="0" max="60"class="form-control" style="width:200px; height: 10%;" name="descanso_update" id="descanso_update">
+                        <input type="text" name="idusuario" id="idusuario" hidden>
                             
                     </form>
 
@@ -294,6 +295,7 @@ if (isset($_SESSION['usuario'])) {
                 $('#third_ejercicio_update').val(dato['ejercicio3']);
                 $('#third_repeticiones_update').val(dato['repeticiones3']);
                 $('#descanso_update').val(dato['descanso']);
+                $('#idusuario').val(dato['idusuario']);
                
 
 

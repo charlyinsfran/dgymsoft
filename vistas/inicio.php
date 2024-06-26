@@ -59,7 +59,7 @@ if (isset($_SESSION['usuario'])) {
               <div class="circle-tile-description text-faded"> Trainers</div>
               <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($result)) : echo $ver[0];
                                                           endwhile; ?></div>
-              <a class="circle-tile-footer" href="productos.php">Ver<i class=""></i></a>
+              <a class="circle-tile-footer" href="trainers.php">Ver<i class=""></i></a>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])) {
               <div class="circle-tile-description text-faded"> Pagos del Mes </div>
               <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($result_pagos)) : echo 'GS. ' . number_format($ver[0], 0, ",", ".");
                                                           endwhile; ?></div>
-              <a class="circle-tile-footer" href="view_compras.php">Ver<i class=""></i></a>
+              <a class="circle-tile-footer" href="pagos.php">Ver<i class=""></i></a>
             </div>
           </div>
         </div>

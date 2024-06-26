@@ -50,9 +50,9 @@ $result = mysqli_query($conexion, $sql);
         <tr style="font-size: 13px; ">
             <td style="width: 10px; text-align:center; height:5px;"><?php echo utf8_encode($ver[0]); ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[1]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[2]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[3]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[4]); ?></td>
+            <td style="text-align: center;"><?php echo number_format($ver[2], 0, ",", "."); ?></td>
+            <td style="text-align: center; width: 500px;"><?php echo strtoupper($ver[3]); ?></td>
+            <td style="text-align: center; width: 400px;"><?php echo strtoupper($ver[4]); ?></td>
             <td style="text-align: center;"><?php echo $ver[5]; ?></td>
             <td style="text-align: center;"><?php echo strtoupper($ver[6]); ?></td>
             <td>

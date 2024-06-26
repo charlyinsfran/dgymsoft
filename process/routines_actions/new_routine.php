@@ -6,6 +6,9 @@ require_once "../../class/routines.php";
 
 $obj = new routines();
 
+
+$idusuario = $_SESSION['iduser'];
+
 $id = $_POST['id'];
 $descripcion = $_POST['descripcion'];
 $calentamiento = $_POST['calentamiento'];
@@ -20,7 +23,7 @@ $descanso = $_POST['descanso'].' minutos';
 
 
 
-$datos = array($id,$descripcion,$calentamiento,$tiempo,$f_ejer,$f_rep,$s_ejer,$s_rep,$t_ejer,$t_rep,$descanso);
+$datos = array($id,$descripcion,$calentamiento,$tiempo,$f_ejer,$f_rep,$s_ejer,$s_rep,$t_ejer,$t_rep,$descanso,$idusuario);
 
 echo $obj->addroutine($datos);
 

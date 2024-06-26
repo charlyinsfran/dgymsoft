@@ -58,13 +58,13 @@ if (isset($_SESSION['usuario'])) {
 <br>
 <br>
 <body>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
         <div class="container">
             <div class="row"></div>
         </div>
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-10">
         <h3 style="text-align: center;">Entrenadores</h3>
 
         <span class="boton btn btn-primary" data-toggle="modal" data-target="#new_trainer">Nuevo</span>

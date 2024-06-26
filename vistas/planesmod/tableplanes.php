@@ -6,7 +6,7 @@ require_once "../../class/conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
-$sql = "SELECT tp.idtb_plan,tp.descripcion,m.simbolo,ROUND(tp.costo),tp.cant_clases from tb_plan tp join tb_moneda m on m.id_moneda = tp.id_moneda order by tp.cant_clases DESC";
+$sql = "SELECT tp.idtb_plan,tp.descripcion,m.simbolo,ROUND(tp.costo),tp.cant_clases from tb_plan tp join tb_moneda m on m.id_moneda = tp.id_moneda order by tp.cant_clases ASC";
 
 $result = mysqli_query($conexion, $sql);
 
