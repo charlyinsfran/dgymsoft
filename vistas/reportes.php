@@ -41,25 +41,34 @@ if (isset($_SESSION['usuario'])) {
 
     if(isset($_GET['dato'])){
       $dato = $_GET['dato'];
-      $sql = "SELECT pesoactual,date(fecha_lastcontrol),avance FROM tb_fichacliente where tb_clientes = '$dato' order by fecha_lastcontrol";
-    }else{
-      $sql = "SELECT pesoactual,date(fecha_lastcontrol),avance FROM tb_fichacliente order by fecha_lastcontrol";
+      $consult = "SELECT peso from tb_clientes where id_clientes = '$dato'";
+      $sql = "SELECT pesoactual,date(fecha_lastcontrol) FROM tb_fichacliente where tb_clientes = '$dato' order by fecha_lastcontrol asc";
     }
     $result = mysqli_query($conexion,$sql);
+
+    $result_consult = mysqli_query($conexion,$consult);
+
 
 
   $valoresx = array(); //produccion
   $valoresy = array(); //fecha
   $diferencia = 0;
-  
+  $peso_inicial = 0.00;
+
+  while($ver= mysqli_fetch_row($result_consult)){
+    $peso_inicial = $peso_inicial+$ver[0];
+  }
+
 
   while ($ver=mysqli_fetch_row($result)) {
-    $diferencia = $ver[2] + $diferencia; 
+    $diferencia = $ver[0]; 
+
     $valoresx[] = $ver[1];
     $valoresy[] = $ver[0];
     
   }
 
+$diferencia = $diferencia - $peso_inicial;
 
   $datosX = json_encode($valoresx);
   $datosY = json_encode($valoresy);

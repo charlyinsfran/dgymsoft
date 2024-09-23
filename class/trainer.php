@@ -21,8 +21,8 @@ class trainers{
         date_default_timezone_set('America/Asuncion');
         $fecha = date('Y-m-d');
 
-        $sql = "INSERT INTO tb_entrenadores(id_entrenadores,nombre,apellido,cedula,formacion,direccion,ciudad,edad,id_tbphoto)
-        values ('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]','$datos[6]','$datos[7]','$datos[8]')";
+        $sql = "INSERT INTO tb_entrenadores(id_entrenadores,nombre,apellido,cedula,formacion,direccion,ciudad,edad,id_tbphoto,idtb_usuarios)
+        values ('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]','$datos[6]','$datos[7]','$datos[8]','$datos[9]')";
 
         return mysqli_query($conexion,$sql);
     }

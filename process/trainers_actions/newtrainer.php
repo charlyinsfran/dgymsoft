@@ -1,9 +1,9 @@
 <?php
 
 
-/*session_start();
-$idusuario = $_SESSION['iduser'];
-*/
+session_start();
+
+
 require_once "../../class/conexion.php";
 require_once "../../class/trainer.php";
 
@@ -11,6 +11,7 @@ $obj = new trainers();
 
 date_default_timezone_set('America/Asuncion');
 $fecha = date('Y-m-d');
+$idusuario = $_SESSION['iduser'];
 
 $ide = $_POST['id'];
 $nombre = $_POST['nombre'];
@@ -51,6 +52,7 @@ if(move_uploaded_file($ruta_almacenamiento,$rutafinal)){
         $datos[6] = $ciudad;
         $datos[7]= $edad;
         $datos[8]= $idimagen;
+        $datos[9] = $idusuario;
 
         echo $obj->newtrainer($datos);
 
